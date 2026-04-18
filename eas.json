@@ -1,0 +1,66 @@
+{
+  "cli": {
+    "version": ">= 5.0.0",
+    "promptToConfigurePushNotifications": false
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "resourceClass": "m1"
+      },
+      "android": {
+        "resourceClass": "medium"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "ios": {
+        "resourceClass": "m1"
+      },
+      "android": {
+        "resourceClass": "medium",
+        "buildType": "apk"
+      }
+    },
+    "production": {
+      "distribution": "store",
+      "ios": {
+        "resourceClass": "m1"
+      },
+      "android": {
+        "resourceClass": "large",
+        "buildType": "app-bundle"
+      }
+    },
+    "playstore": {
+      "distribution": "store",
+      "android": {
+        "resourceClass": "large",
+        "buildType": "app-bundle",
+        "gradleCommand": ":app:bundleRelease"
+      }
+    },
+    "apk": {
+      "distribution": "internal",
+      "android": {
+        "resourceClass": "large",
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "action": "archive",
+        "uploadBuildEndpoint": "https://api.apple.com/upload"
+      },
+      "android": {
+        "action": "google-play",
+        "androidApiKey": "$ANDROID_API_KEY"
+      }
+    }
+  }
+}
